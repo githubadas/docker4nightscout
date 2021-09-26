@@ -3,8 +3,6 @@ Simple way to run your own Nightscout instance on your local NAS. Don't forget t
 
 version 14.2.2
 
-Simple way to run your own Nightscout instance on your local NAS. Don't forget to redirect port on yout router.
-
 Offical site of Nightscout project:
 https://github.com/nightscout/cgm-remote-monitor
 
