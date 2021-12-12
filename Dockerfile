@@ -1,20 +1,21 @@
-FROM node:10-alpine
+FROM node:14.15.3-alpine
 
-ARG GIT_URL=https://github.com/nightscout/cgm-remote-monitor.git
-ARG GIT_BRANCH=master
+LABEL maintainer="docker4nightscout"
+
+ARG ADDRESS=https://github.com/nightscout/cgm-remote-monitor.git
+ARG BRANCH=master
 EXPOSE 1337
 
 RUN mkdir -p /nightscout && \
   apk update && \
   apk add --no-cache --virtual build-dependencies python make g++ git && \
   apk add --no-cache tini && \
-  git clone $GIT_URL --branch $GIT_BRANCH /nightscout && \
+  git clone $ADDRESS --branch $BRANCH /nightscout && \
   cd /nightscout && \
-  npm install --no-cache && \
+  npm install --cache /tmp/empty-cache && \
   npm run postinstall && \
-  npm audit fix && \
-  apk del build-dependencies && \
-  chown -R node:node /nightscout
+  npm run env && \
+  rm -rf /tmp/*
 
 ENTRYPOINT ["/sbin/tini", "--"]
 
