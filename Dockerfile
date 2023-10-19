@@ -6,6 +6,8 @@ LABEL maintainer="Nightscout Contributors"
 ARG ZRODLO=https://github.com/nightscout/cgm-remote-monitor.git
 ARG WERSJA=master
 
+EXPOSE 1337
+
 RUN  mkdir -p /nightscout && \
   apk update && \
   apk add git && \
@@ -25,6 +27,4 @@ ADD . /nightscout
 
 USER node
 
-EXPOSE 1337
-
-CMD ["node", "lib/server/server.js"]
+CMD ["node", "/nightscout/lib/server/server.js"]
