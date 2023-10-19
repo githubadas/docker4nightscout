@@ -9,8 +9,7 @@ ARG WERSJA=master
 WORKDIR /nightscout
 ADD . /nightscout
 
-RUN  mkdir -p /nightscout && \
-  git clone $GIT --branch $WERSJA /nightscout && \
+RUN  git clone $GIT --branch $WERSJA /nightscout && \
   cd /nightscout
   
   #apk update && \
