@@ -9,7 +9,7 @@ ARG WERSJA=master
 WORKDIR /opt/app
 ADD . /opt/app
 
-RUN  apk add --no-cache --virtual build-dependencies python make g++ git
+RUN  apk add python make g++ git
 
 USER node
 
