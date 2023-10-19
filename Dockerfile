@@ -7,9 +7,6 @@ ARG BRANCH=master
 EXPOSE 1337
 
 RUN mkdir -p /nightscout && \
-  apk update && \
-  apk add --no-cache --virtual build-dependencies python make g++ git && \
-  apk add --no-cache tini && \
   git clone $ADDRESS --branch $BRANCH /nightscout && \
   cd /nightscout && \
   npm install --cache /tmp/empty-cache && \
