@@ -9,10 +9,9 @@ ARG WERSJA=master
 RUN  mkdir -p /nightscout && \
   apk update && \
   apk add git && \
-  apk add python && \
-  apk add make && \
-  apk add g++ 
-#  git clone $ZRODLO --branch $WERSJA /nightscout
+  git clone $ZRODLO --branch $WERSJA /nightscout && \
+  cd /nightscout
+
 
 
 
