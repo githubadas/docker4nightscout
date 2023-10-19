@@ -13,12 +13,11 @@ RUN  mkdir -p /nightscout && \
   apk add npm && \
   git clone $ZRODLO --branch $WERSJA /nightscout && \
   cd /nightscout && \
-  npm install --cache /tmp/empty-cache
-  #npm run postinstall && \
-  #npm run env && \
-  #rm -rf /tmp/*
+  npm install --cache /tmp/empty-cache && \
+  npm run postinstall && \
+  npm run env && \
+  rm -rf /tmp/*
   
-
 ENTRYPOINT ["/sbin/tini", "--"]
 
 WORKDIR /nightscout
