@@ -6,8 +6,8 @@ LABEL maintainer="Nightscout Contributors"
 ARG ZRODLO=https://github.com/nightscout/cgm-remote-monitor.git
 ARG WERSJA=master
 
-RUN  mkdir -p /nightscout
-
+RUN  mkdir -p /nightscout && \
+  git clone $ZRODLO --branch $WERSJA /nightscout
 
 
 
