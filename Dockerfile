@@ -3,25 +3,25 @@ FROM node:16.16.0-alpine
 LABEL maintainer="Nightscout Contributors"
 # source from official site cgm-remote-monitor/nightscout
 
-ARG ADRES=https://github.com/nightscout/cgm-remote-monitor.git
+ARG GIT=https://github.com/nightscout/cgm-remote-monitor.git
 ARG WERSJA=master
 
 WORKDIR /opt/app
 ADD . /opt/app
 
-RUN git clone $ADRES --branch $WERSJA /opt/app && \
-  #mkdir -p /nightscout && \
-  #apk update && \
-  #apk add --no-cache --virtual build-dependencies python make g++ git && \
-  #apk add --no-cache tini && \
-  cd /opt/app && \
+RUN mkdir -p /nightscout && \
+  chown -R node:node /nightscout && \
+  git clone $GIT --branch $WERSJA /nightscout && \
+  cd /nightscout && \
+  apk update && \
+  apk add --no-cache --virtual build-dependencies python make g++ git && \
+  apk add --no-cache tini && \
   npm install --no-cache && \
   npm run postinstall && \
   #npm audit fix && \
   npm run env && \
   rm -rf /tmp/*
   #apk del build-dependencies
-  #chown -R node:node /nightscout
 
 USER node
 
