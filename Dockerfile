@@ -7,7 +7,8 @@ ARG ZRODLO=https://github.com/nightscout/cgm-remote-monitor.git
 ARG WERSJA=master
 
 RUN  mkdir -p /nightscout && \
-  apk update
+  apk update && \
+  apk add git
 #  git clone $ZRODLO --branch $WERSJA /nightscout
 
 
