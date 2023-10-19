@@ -20,11 +20,11 @@ RUN  mkdir -p /nightscout && \
   npm run env && \
   rm -rf /tmp/*
   
-ENTRYPOINT ["/sbin/tini", "--"]
+#ENTRYPOINT ["/sbin/tini", "--"]
 
 WORKDIR /nightscout
 ADD . /nightscout
 
 USER node
 
-CMD ["node", "/nightscout/lib/server/server.js"]
+CMD ["node", "lib/server/server.js"]
