@@ -9,6 +9,7 @@ ARG WERSJA=master
 RUN  mkdir -p /nightscout && \
   apk update && \
   apk add git && \
+  apk add node && \
   git clone $ZRODLO --branch $WERSJA /nightscout && \
   cd /nightscout
   npm install --cache /tmp/empty-cache && \
