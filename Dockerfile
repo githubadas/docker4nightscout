@@ -12,10 +12,10 @@ ADD . /opt/app
 RUN mkdir -p /nightscout && \
   chown -R node:node /nightscout && \
   apk update && \
-  apk add --no-cache --virtual build-dependencies python make g++ git && \
-  apk add --no-cache tini && \
-  git clone $GIT --branch $WERSJA /nightscout && \
-  cd /nightscout
+  apk add --no-cache --virtual build-dependencies python make g++ git
+  #apk add --no-cache tini && \
+  #git clone $GIT --branch $WERSJA /nightscout && \
+  #cd /nightscout
   #npm install --no-cache && \
   #npm run postinstall && \
   #npm audit fix && \
