@@ -9,10 +9,10 @@ ARG WERSJA=master
 WORKDIR /opt/app
 ADD . /opt/app
 
-RUN mkdir -p /nightscout
-  #chown -R node:node /nightscout && \
-  #git clone $GIT --branch $WERSJA /nightscout && \
-  #cd /nightscout && \
+RUN mkdir -p /nightscout && \
+  chown -R node:node /nightscout && \
+  git clone $GIT --branch $WERSJA /nightscout && \
+  cd /nightscout
   #apk update && \
   #apk add --no-cache --virtual build-dependencies python make g++ git && \
   #apk add --no-cache tini && \
