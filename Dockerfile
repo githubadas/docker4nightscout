@@ -17,8 +17,10 @@ RUN git clone $ADRES --branch $WERSJA /opt/app && \
   cd /opt/app && \
   npm install --no-cache && \
   npm run postinstall && \
-  npm audit fix && \
-  apk del build-dependencies && \
+  #npm audit fix && \
+  npm run env && \
+  rm -rf /tmp/*
+  #apk del build-dependencies
   #chown -R node:node /nightscout
 
 USER node
