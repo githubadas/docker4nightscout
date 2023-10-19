@@ -9,8 +9,7 @@ ARG ADDRESS=https://github.com/nightscout/cgm-remote-monitor.git
 ARG BRANCH=14.2.6
 EXPOSE 1337
 
-RUN mkdir -p /nightscout && \
-  git clone $ADDRESS --branch $BRANCH /nightscout && \
+RUN  git clone $ADDRESS --branch $BRANCH /nightscout && \
   cd /nightscout && \
   npm install --cache /tmp/empty-cache && \
   npm run postinstall && \
