@@ -1,6 +1,6 @@
 FROM node:16.16.0-alpine
 
-LABEL maintainer="Nightscout Contributors"
+LABEL maintainer="docker4nightscout"
 # source from official site cgm-remote-monitor/nightscout
 
 ARG ZRODLO=https://github.com/nightscout/cgm-remote-monitor.git
@@ -19,8 +19,6 @@ RUN  mkdir -p /nightscout && \
   npm run postinstall && \
   npm run env && \
   rm -rf /tmp/*
-  
-#ENTRYPOINT ["/sbin/tini", "--"]
 
 WORKDIR /nightscout
 ADD . /nightscout
