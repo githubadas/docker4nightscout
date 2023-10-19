@@ -6,17 +6,20 @@ LABEL maintainer="Nightscout Contributors"
 ARG ADRES=https://github.com/nightscout/cgm-remote-monitor.git
 ARG WERSJA=master
 
-RUN mkdir -p /nightscout && \
+WORKDIR /nightscout
+ADD . /nightscout
+
+RUN git clone $ADRES --branch $WERSJA /nightscout && \
+  #mkdir -p /nightscout && \
   #apk update && \
   #apk add --no-cache --virtual build-dependencies python make g++ git && \
   #apk add --no-cache tini && \
-  git clone $ADRES --branch $WERSJA /nightscout && \
   cd /nightscout && \
   npm install --no-cache && \
   npm run postinstall && \
   npm audit fix && \
   apk del build-dependencies && \
-  chown -R node:node /nightscout
+  #chown -R node:node /nightscout
 
 USER node
 
