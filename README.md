@@ -1,7 +1,7 @@
 # docker4nightscout
 Simple way to run your own Nightscout instance on your local NAS. Don't forget to redirect port on yout router.
 
-version 15.0.2
+version 15.0.3
 
 Offical site of Nightscout project:
 https://github.com/nightscout/cgm-remote-monitor
