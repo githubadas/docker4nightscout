@@ -1,4 +1,4 @@
-FROM node:16.16.0-alpine
+FROM node:22-alpine
 
 LABEL maintainer="docker4nightscout"
 # source from official site cgm-remote-monitor/nightscout
@@ -11,8 +11,6 @@ EXPOSE 1337
 RUN  mkdir -p /nightscout && \
   apk update && \
   apk add git && \
-  apk add nodejs && \
-  apk add npm && \
   git clone $ZRODLO --branch $WERSJA /nightscout && \
   cd /nightscout && \
   npm install --cache /tmp/empty-cache && \
