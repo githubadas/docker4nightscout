@@ -13,7 +13,7 @@ RUN  mkdir -p /nightscout && \
   apk add git && \
   git clone $ZRODLO --branch $WERSJA /nightscout && \
   cd /nightscout && \
-  npm install --force --cache /tmp/empty-cache && \
+  npm install --omit=optional --cache /tmp/empty-cache && \
   npm run postinstall && \
   npm run env && \
   rm -rf /tmp/*
